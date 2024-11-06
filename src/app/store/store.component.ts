@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Product } from "../model/product.model";
 import { ProductRepository } from "../model/product.repository";
-
+import { Cart } from "../model/cart.model";
 @Component({
     selector:"store",
     templateUrl:"store.component.html"
@@ -15,7 +15,8 @@ means all categories) and is used in the updateData method as an argument to the
     selectedCategory: string | undefined;
     productsPerPage = 4;
     selectedPage = 1;
-    constructor(private repository: ProductRepository) { }
+    constructor(private repository: ProductRepository,
+        private cart: Cart) { }
 
     get Products(): Product[]{
         let pageIndex = (this.selectedPage - 1) * this.productsPerPage
@@ -46,10 +47,22 @@ in a method that can be invoked when the user makes a category selection.
 
     get pageNumbers(): number[]{
 
-        /* This statement creates a new array, fills it with the value 0, and then uses the map method to generate a 
-new array with the number sequence. */
+        /* This statement creates a new array, fills it with the value 0, and then uses
+         the map method to generate a new array with the number sequence. */
         return Array(Math.ceil(this.repository
             .getProducts(this.selectedCategory).length/this.productsPerPage))
             .fill(0).map((x,i) => i + 1);
     }
+
+    addProductToCart(product:Product){
+        this.cart.addLine(product);
+    }
+
+    /*
+    get pageCount(): number{
+        return Math.ceil(this.repository
+            .getProducts(this.selectedCategory).length / this.productsPerPage)
+    }
+    */
 }
+

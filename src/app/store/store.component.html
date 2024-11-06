@@ -1,7 +1,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="bg-dark text-white p-2">
-            <span class="navbar-brand ml-2">SPORTS STORE</span>
+            <span class="navbar-brand ml-2">
+                SPORTS STORE
+                <cart-summary></cart-summary>
+            </span>
         </div>
     </div>
 
@@ -30,9 +33,15 @@
                         {{product.price | currency:"USD":"symbol":"2.2-2"}}
                     </span>
                 </h4>
-                <div class="card-text bg-white p-1">{{product.description}}</div>
+
+                <!-- Add to cart result in: Your cart:1 item($100),  -->
+                <div class="card-text bg-white p-1">{{product.description}}
+                    <button class="btn btn-success btn-sm float-end"
+                    (click)="addProductToCart(product)">Add to cart</button>
+                </div>
             </div>
 
+            <!-- Pagination for products -->
             <div class="form-inline float-start mr-1">
                 <select class="form-control" [value]="productsPerPage"
                 (change)="changePageSize($any($event).target.value)">
@@ -46,6 +55,8 @@
             </div>
 
             <div class="btn-group float-end">
+
+             <!-- The new data binding relies on a property called pageCount to configure the custom directive.   -->
                 <button *ngFor="let page of pageNumbers" (click)="changePage(page)"
                 class="btn btn-primary"
                 [class.active]="page == selectedPage">
