@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { Product } from "../model/product.model";
 import { ProductRepository } from "../model/product.repository";
 import { Cart } from "../model/cart.model";
+import { Router } from "@angular/router";
 @Component({
     selector:"store",
     templateUrl:"store.component.html"
@@ -16,7 +17,8 @@ means all categories) and is used in the updateData method as an argument to the
     productsPerPage = 4;
     selectedPage = 1;
     constructor(private repository: ProductRepository,
-        private cart: Cart) { }
+        private cart: Cart,
+        private router: Router) { }
 
     get Products(): Product[]{
         let pageIndex = (this.selectedPage - 1) * this.productsPerPage
@@ -53,9 +55,12 @@ in a method that can be invoked when the user makes a category selection.
             .getProducts(this.selectedCategory).length/this.productsPerPage))
             .fill(0).map((x,i) => i + 1);
     }
-
+    
     addProductToCart(product:Product){
         this.cart.addLine(product);
+
+        //this is  
+        this.router.navigateByUrl("cart");
     }
 
     /*

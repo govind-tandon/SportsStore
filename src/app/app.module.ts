@@ -7,6 +7,7 @@ import { StoreComponent } from './store/store.component';
 import { CheckoutComponent } from './store/checkout.component';
 import { CartDetailComponent } from './store/cartDetail.component';
 import { RouterModule } from '@angular/router';
+import { StoreFirstGuard } from './store/storeFirst.guard';
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +25,7 @@ import { RouterModule } from '@angular/router';
     ])
 ],
 
-  providers: [],
+  providers: [StoreFirstGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
