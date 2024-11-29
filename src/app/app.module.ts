@@ -18,9 +18,28 @@ import { StoreFirstGuard } from './store/storeFirst.guard';
 
     //RouterModule.forRoot method id passed a set of routes, each of which maps a URL to a component, The first three routes in the listing match the URLs
     RouterModule.forRoot([
-      { path:"store", component:StoreComponent },
-      { path:"cart", component:CartDetailComponent },
-      { path:"checkout", component:CheckoutComponent },
+      { 
+        path:"store", component:StoreComponent,
+        canActivate:[StoreFirstGuard]
+       },
+
+      { 
+        path:"cart", component:CartDetailComponent,
+        canActivate:[StoreFirstGuard]
+      },
+
+      { 
+        path:"checkout", component:CheckoutComponent,
+        canActivate:[StoreFirstGuard]
+      },
+
+      {
+        path:"admin",
+        loadChildren: () => import ("./admin/admin.module")
+            .then(m => m.AdminModule),
+          canActivate:[StoreFirstGuard]
+      },
+
       { path:"**", redirectTo:"/store" }
     ])
 ],
