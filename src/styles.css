@@ -1,5 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 /* Updated color scheme */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0px; /* Hide scrollbar */
+  height: 0px; /* Hide horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent; /* Make thumb invisible */
+}
+
+
 
 .navbar-brand {
   font-size: 24px;
@@ -24,4 +40,23 @@
 
 img {
   border-radius: 8px;
+}
+
+.card {
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.badge {
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
+.btn-outline-primary.active {
+  background-color: #007bff !important;
+  color: white !important;
 }
