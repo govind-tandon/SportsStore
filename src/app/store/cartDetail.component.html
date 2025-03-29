@@ -1,19 +1,21 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="bg-dark text-white p-2">
+        <div class="bg-dark text-white p-2 d-flex align-items-center">
+            <img src=".././../assets/images/store_logo.jpg" alt="" style="height: 60px; margin-right: 10px;">
             <span class="navbar-brand ml-2">SPORTS STORE</span>
         </div>
     </div>
     <div class="row">
         <div class="col mt-2">
             <h2 class="text-center">Your Cart</h2>
-            <table class="table table-bordered table-striped p-2">
+            <table class="table table-bordered table-striped p-2 table-hover table-light">
                 <thead>
                     <tr>
                         <th>Quantity</th>
                         <th>Product</th>
                         <th class="text-end">Price</th>
                         <th class="text-end">Subtotal</th>
+                        <th class="text-end">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,7 +30,7 @@
                                 (change)="cart.updateQuantity(line.product,
     $any($event).target.value)" />
                         </td>
-                        
+
                         <td>{{line.product.name}}</td>
                         <td class="text-end">
                             {{line.product.price | currency:"USD":"symbol":"2.2-2"}}
@@ -57,10 +59,10 @@
     <div class="row">
         <div class="col">
             <div class="text-center">
-                <button class="btn btn-primary m-1" routerLink="/store">
+                <button class="btn btn-success m-1" routerLink="/store">
                     Continue Shopping
                 </button>
-                <button class="btn btn-secondary m-1" routerLink="/checkout" [disabled]="cart.lines.length == 0">
+                <button class="btn btn-warning m-1" routerLink="/checkout" [disabled]="cart.lines.length == 0">
                     Checkout
                 </button>
             </div>

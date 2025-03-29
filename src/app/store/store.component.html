@@ -1,6 +1,7 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="bg-dark text-white p-2">
+        <div class="bg-dark text-white p-2 d-flex align-items-center">
+            <img src="assets/logo.png" alt="Sports Store Logo" style="height: 40px; margin-right: 10px;">
             <span class="navbar-brand ml-2">
                 SPORTS STORE
                 <cart-summary></cart-summary>
@@ -14,20 +15,18 @@
                 <button class="btn btn-success" (click)="changeCategory()">
                     Home
                 </button>
-                <button *ngFor="let cat of categories"
-                class="btn btn-primary"
-                [class.active]="cat == selectedCategory"
-                (click)="changeCategory(cat)">
+                <button *ngFor="let cat of categories" class="btn btn-primary" [class.active]="cat == selectedCategory"
+                    (click)="changeCategory(cat)">
 
-                {{cat}}
+                    {{cat}}
                 </button>
 
                 <button class="btn btn-danger mt-5" routerLink="/admin">Admin</button>
             </div>
 
         </div>
- 
-         <div class="col-9 bg-success p-2 text-dark">
+
+        <div class="col-9 bg-success p-2 text-dark">
             <div *ngFor="let product of Products" class="card m-1 p-1 bg-light">
                 <h4>
                     {{product.name}}
@@ -38,32 +37,31 @@
 
                 <!-- Add to cart result in: Your cart:1 item($100),  -->
                 <div class="card-text bg-white p-1">{{product.description}}
-                    <button class="btn btn-success btn-sm float-end"
-                    (click)="addProductToCart(product)">Add to cart</button>
+                    <button class="btn btn-success btn-sm float-end" (click)="addProductToCart(product)">Add to
+                        cart</button>
                 </div>
             </div>
 
             <!-- Pagination for products -->
             <div class="form-inline float-start mr-1">
                 <select class="form-control" [value]="productsPerPage"
-                (change)="changePageSize($any($event).target.value)">
+                    (change)="changePageSize($any($event).target.value)">
 
-            <option value="3">3 per page</option>
-            <option value="4">4 per page</option>
-            <option value="6">6 per page</option>
-            <option value="8">8 per page</option>
+                    <option value="3">3 per page</option>
+                    <option value="4">4 per page</option>
+                    <option value="6">6 per page</option>
+                    <option value="8">8 per page</option>
 
-        </select>
+                </select>
             </div>
 
             <div class="btn-group float-end">
 
-             <!-- The new data binding relies on a property called pageCount to configure the custom directive.   -->
-                <button *ngFor="let page of pageNumbers" (click)="changePage(page)"
-                class="btn btn-primary"
-                [class.active]="page == selectedPage">
-                {{page}}
-            </button>
+                <!-- The new data binding relies on a property called pageCount to configure the custom directive.   -->
+                <button *ngFor="let page of pageNumbers" (click)="changePage(page)" class="btn btn-primary"
+                    [class.active]="page == selectedPage">
+                    {{page}}
+                </button>
             </div>
         </div>
     </div>

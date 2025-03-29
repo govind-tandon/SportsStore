@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+/* Updated color scheme */
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.table th {
+  background-color: #343a40 !important;
+  color: white !important;
+}
+
+.btn-success:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #ffcc00;
+  color: black;
+}
+
+img {
+  border-radius: 8px;
+}
